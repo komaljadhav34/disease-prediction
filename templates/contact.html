@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4fff4;
+      color: #153e1d;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #165b2f;
+      margin-bottom: 30px;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .contact-form, .contact-info {
+      flex: 1;
+      min-width: 300px;
+      margin: 10px;
+    }
+
+    .contact-form h2, .contact-info h2 {
+      margin-bottom: 15px;
+      color: #165b2f;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      background-color: #1d8e3f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #157a33;
+    }
+
+    .contact-info p {
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .contact-wrapper {
+        flex-direction: column;
+      }
+    }
+    
+    /* Hamburger container */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 100;
+}
+
+/* The ☰ icon */
+.menu-icon {
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate icon slightly when active (optional) */
+.menu-icon.active {
+  transform: rotate(90deg);
+}
+
+/* Dropdown menu */
+.menu-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Menu links */
+.menu-content a {
+  display: block;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Hover effect */
+.menu-content a:hover {
+  background-color: #40916c;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 60px;
+  }
+
+  form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input[type="file"] {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .result-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .field-title {
+    font-size: 20px;
+  }
+
+  .field-content {
+    font-size: 16px;
+  }
+
+  .navbar {
+    top: 10px;
+    right: 15px;
+  }
+
+  .menu-icon {
+    font-size: 32px;
+  }
+
+  .menu-content {
+    top: 35px;
+    right: 0;
+    min-width: 130px;
+  }
+
+  .menu-content a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <div class="contact-wrapper">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2>Send us a message</h2>
+        <form id="contactForm">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="your@email.com" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>📧 Email</strong><br> support@plantcare.com</p>
+        <p><strong>📞 Phone</strong><br> +1 (555) 123-4567</p>
+        <p><strong>📅 Office Hours</strong><br>
+          Monday - Friday: 9am – 5pm<br>
+          Saturday: 10am – 2pm<br>
+          Sunday: Closed</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      alert(`Thank you, ${name}! Your message has been sent.`);
+      this.reset();
+    });
+     function toggleMenu() {
+    const menu = document.getElementById("menuContent");
+    const icon = document.querySelector(".menu-icon");
+
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+    icon.classList.toggle("active"); // Optional rotation
+}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Plant Disease Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4fef4;
+      color: #1b5e20;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    .dropdown {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 40px;
+      background-color: #2e7d32;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    .dropdown a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown a:hover {
+      background-color: #388e3c;
+    }
+
+
+
+    main {
+      flex: 1;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    main h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #1b5e20;
+      text-align: center;
+    }
+
+    main p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: #2e7d32;
+    }
+
+     
+    /* Hamburger container */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 100;
+}
+
+/* The ☰ icon */
+.menu-icon {
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate icon slightly when active (optional) */
+.menu-icon.active {
+  transform: rotate(90deg);
+}
+
+/* Dropdown menu */
+.menu-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Menu links */
+.menu-content a {
+  display: block;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Hover effect */
+.menu-content a:hover {
+  background-color: #40916c;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 60px;
+  }
+
+  form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input[type="file"] {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .result-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .field-title {
+    font-size: 20px;
+  }
+
+  .field-content {
+    font-size: 16px;
+  }
+
+  .navbar {
+    top: 10px;
+    right: 15px;
+  }
+
+  .menu-icon {
+    font-size: 32px;
+  }
+
+  .menu-content {
+    top: 35px;
+    right: 0;
+    min-width: 130px;
+  }
+
+  .menu-content a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    🌿 Plant Disease Detection System
+    <div class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-content" id="menuContent">
+      <a href="home.html">Home</a>
+      <a href="#">Detection</a>
+      <a href="disease.html">Common Diseases</a>
+      <a href="about.html">About Us</a>
+      <a href="#">Language Support</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="logout.html">Log out</a>
+    </div>
+  </div>
+  </header>
+
+  
+
+  <main>
+    <h1>About PlantCare </h1>
+    <p>
+      <strong>PlantCare </strong> is an intelligent web-based system designed to help farmers, gardeners, and agricultural experts quickly identify plant diseases through image recognition.
+    </p>
+
+    <p>
+      Users simply upload a photo of a plant leaf, and the system uses a trained machine learning model to detect and classify diseases such as leaf spots, rusts, blights, and more.
+    </p>
+
+    <p>
+      Our goal is to support sustainable agriculture by offering accessible, fast, and reliable plant health diagnostics — even in remote locations where expert guidance is not immediately available.
+    </p>
+
+    <p>
+      This tool is built using modern technologies like <strong>HTML, CSS, JavaScript</strong> for the front-end, and <strong>Python, Flask, and Machine Learning</strong> for the backend. The model is trained on thousands of plant leaf images to ensure accurate results.
+    </p>
+
+    <p>
+      Together, let’s promote healthier crops, reduce chemical misuse, and empower plant lovers with technology. 🌱
+    </p>
+  </main>
+
+  
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Optional: Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      const menu = document.getElementById('dropdownMenu');
+      const icon = document.querySelector('.menu-icon');
+      if (!menu.contains(e.target) && !icon.contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

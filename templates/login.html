@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            background-image: url('/static/home1.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            width: 300px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #000;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        .register-link {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="POST" action="">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <script>
+                        {% for message in messages %}
+                            {% if "Login successful" in message %}
+                                alert("Login successful!");
+                           
+                            {% elif "Invalid" in message %}
+                                alert("Invalid username or password!");
+                            {% endif %}
+                        {% endfor %}
+                    </script>
+                {% endif %}
+            {% endwith %}
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Login</button>
+            <div class="register-link">
+                Don't have an account? <a href="{{ url_for('signup') }}">Register</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

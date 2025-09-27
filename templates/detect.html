@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detect Plant Disease</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: white;
+      background-image: url('/static/home1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: brightness(0.7);
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #034628;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    input[type="file"] {
+      margin: 10px 0;
+      padding: 8px;
+      border-radius: 6px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #034628;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #40916c;
+    }
+
+    .result-container {
+      margin-top: 30px;
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .field-title {
+      font-size: 25px;
+      font-weight: bold;
+      color: #034628;
+      margin-bottom: 8px;
+    }
+
+    .field-content {
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    /* Hamburger container */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 100;
+}
+
+/* The ☰ icon */
+.menu-icon {
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate icon slightly when active (optional) */
+.menu-icon.active {
+  transform: rotate(90deg);
+}
+
+/* Dropdown menu */
+.menu-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Menu links */
+.menu-content a {
+  display: block;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Hover effect */
+.menu-content a:hover {
+  background-color: #40916c;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 60px;
+  }
+
+  form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input[type="file"] {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .result-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .field-title {
+    font-size: 20px;
+  }
+
+  .field-content {
+    font-size: 16px;
+  }
+
+  .navbar {
+    top: 10px;
+    right: 15px;
+  }
+
+  .menu-icon {
+    font-size: 32px;
+  }
+
+  .menu-content {
+    top: 35px;
+    right: 0;
+    min-width: 130px;
+  }
+
+  .menu-content a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <h1><b>Upload Leaf Image</b></h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" id="imageFile" accept="image/*" required />
+    <br>
+    <button type="submit">Detect</button>
+  </form>
+
+  <div class="result-container">
+    <div class="field-title">Prediction Result:</div>
+    <div class="field-content" id="predictionResult">--</div>
+
+    <div class="field-title">Suggested Remedies:</div>
+    <div class="field-content" id="remedy">--</div>
+  </div>
+
+  <div class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-content" id="menuContent">
+      <a href="home.html">Home</a>
+      <a href="#">Detection</a>
+      <a href="/disease">Common Diseases</a>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/logout">Logout</a></li>
+      <a href="/login">Login</a></li>
+
+    </div>
+  </div>
+ 
+
+
+<script>
+  // 🟢 1. Form submission (Detect Disease)
+  document.getElementById("uploadForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", document.getElementById("imageFile").files[0]);
+
+    const res = await fetch("/predict", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+    document.getElementById("predictionResult").innerText = data.result || "Not available";
+    document.getElementById("remedy").innerText = data.remedy || "No remedy found.";
+  };
+
+  // 🟢 2. Toggle Menu (Now outside and global)
+  function toggleMenu() {
+    const menu = document.getElementById("menuContent");
+    const icon = document.querySelector(".menu-icon");
+
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+    icon.classList.toggle("active"); // Optional rotation
+  }
+</script>
+
+</body>
+</html>

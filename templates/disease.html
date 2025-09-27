@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Common Plant Diseases</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('home1'); /* Replace with your background image path */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .slider-wrapper {
+      overflow: hidden;
+      width: 960px; /* 3 slides * (300px + 20px gap) */
+    }
+
+    .slider {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      flex: 0 0 300px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      text-align: center;
+      text-decoration: none;
+      color: black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.05);
+    }
+
+    .slide img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .slide p {
+      margin: 0;
+      padding: 12px;
+      font-size: 20px;
+      background: #fff;
+      border-radius: 0 0 15px 15px;
+    }
+
+    /* Hamburger container */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 100;
+}
+
+/* The ☰ icon */
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate icon slightly when active (optional) */
+.menu-icon.active {
+  transform: rotate(90deg);
+}
+
+/* Dropdown menu */
+.menu-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Menu links */
+.menu-content a {
+  display: block;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Hover effect */
+.menu-content a:hover {
+  background-color: #40916c;
+  border-radius: 6px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .slide {
+    flex: 0 0 80%;
+  }
+
+  .slide p {
+    font-size: 18px;
+  }
+
+  .menu-content {
+    right: 10px;
+  }
+
+  .menu-icon {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    flex: 0 0 90%;
+  }
+
+  .slide p {
+    font-size: 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="slider-wrapper">
+      <div class="slider" id="slider">
+        <a href="leaf-blight.html" class="slide">
+          <img src="images/disease1.jpg" alt="leaf-blight" />
+          <p><b>Leaf Blight</b></p>
+        </a>
+        <a href="powderymildew.html" class="slide">
+          <img src="images/disease2.jpg" alt="powdery-mildew" />
+          <p><b>Powdery Mildew</b></p>
+        </a>
+        <a href="downymildew.html" class="slide">
+          <img src="images/disease3.jpg" alt="downy-mildew" />
+          <p><b>Downy Mildew</b></p>
+        </a>
+        <a href="rust.html" class="slide">
+          <img src="images/disease4.jpeg" alt="rust" />
+          <p><b>Rust</b></p>
+        </a>
+        <a href="mosaicvirus.html" class="slide">
+          <img src="images/disease5.jpg" alt="mosaic-virus" />
+          <p><b>Mosaic Virus</b></p>
+        </a>
+        <a href="wilt.html" class="slide">
+          <img src="images/disease6.jpeg" alt="wilt" />
+          <p><b>Wilt</b></p>
+        </a>
+        <a href="anthracnose.html" class="slide">
+          <img src="images/disease7.jpg" alt="anthracnose" />
+          <p><b>Anthracnose</b></p>
+        </a>
+        <a href="canker.html" class="slide">
+          <img src="images/disease8.jpeg" alt="canker" />
+          <p><b>Canker</b></p>
+        </a>
+        <a href="clubroot.html" class="slide">
+          <img src="images/disease9.jpg" alt="clubroot" />
+          <p><b>Clubroot</b></p>
+        </a>
+        <a href="sootymold.html" class="slide">
+          <img src="images/disease10.jpg" alt="sooty-mold" />
+          <p><b>Sooty Mold</b></p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-content" id="menuContent">
+      <a href="home.html">Home</a>
+      <a href="detect.html">Detection</a>
+      <a href="#">Common Diseases</a>
+      <a href="about.html">About Us</a>
+      <a href="#">Language Support</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="logout.html">Log out</a>
+    </div>
+  </div>
+ 
+  <script>
+    const slider = document.getElementById('slider');
+    const slides = slider.children;
+    const slideWidth = slides[0].offsetWidth + 20;
+    const visibleSlides = 3;
+
+    // Clone first few slides to end
+    for (let i = 0; i < visibleSlides; i++) {
+      const clone = slides[i].cloneNode(true);
+      slider.appendChild(clone);
+    }
+
+    let index = 0;
+
+    function moveSlide() {
+      index++;
+      slider.style.transition = 'transform 0.5s ease-in-out';
+      slider.style.transform = `translateX(-${index * slideWidth}px)`;
+
+      if (index === slides.length - visibleSlides) {
+        // Reset after transition ends
+        setTimeout(() => {
+          slider.style.transition = 'none';
+          slider.style.transform = 'translateX(0)';
+          index = 0;
+        }, 500);
+      }
+    }
+
+    setInterval(moveSlide, 3000);
+
+    function toggleMenu() {
+  const menu = document.getElementById("menuContent");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+    
+  </script>
+</body>
+</html>
