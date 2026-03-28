@@ -1,10 +1,10 @@
-# Leaf Disease Detection System
+# Leaf disease-prediction system
 
 A Flask-based web application that identifies plant leaf diseases using a custom Convolutional Neural Network (CNN) feature extraction implemented with NumPy.
 
 ## 🌟 Features
 
-- **Disease Detection**: Upload an image of a plant leaf to identify the disease and get remedy suggestions.
+- **Disease-Prediction**: Upload an image of a plant leaf to identify the disease and get remedy suggestions.
 - **Custom CNN implementation**: Feature extraction (convolution, ReLU, max pooling) implemented from scratch using NumPy.
 - **Nearest-Neighbor Classification**: Diseases are identified by comparing image features against a pre-loaded dataset using Euclidean distance.
 - **User Authentication**: Secure signup and login system with password validation (requires at least 8 characters, one uppercase letter, one number, and one special character).
