@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}About Us - PlantCare AI{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; padding: 40px 20px;">
+    <div class="glass-container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <i class="ph-fill ph-info" style="font-size: 3rem; color: var(--accent-primary);"></i>
+            <h2>About PlantCare AI</h2>
+        </div>
+        
+        <p>PlantCare AI is an advanced Leaf Disease Detection System powered by a custom Convolutional Neural Network (CNN). Our mission is to provide farmers, botanists, and home gardeners with an accessible tool to instantly diagnose plant health issues and receive actionable remedies.</p>
+        
+        <h3 style="margin-top: 30px; font-size: 1.3rem;">How It Works</h3>
+        <p>Our system uses a custom NumPy-based CNN for feature extraction, identifying intricate patterns in leaf structures. It then utilizes Nearest-Neighbor Classification to compare the uploaded image features against a pre-trained dataset of healthy and diseased plant leaves.</p>
+
+        <h3 style="margin-top: 30px; font-size: 1.3rem;">Technologies Used</h3>
+        <ul style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
+            <li><strong>Backend:</strong> Python, Flask</li>
+            <li><strong>AI/ML:</strong> Custom CNN implemented in NumPy</li>
+            <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Glassmorphism UI</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

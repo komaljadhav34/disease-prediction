@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ disease_name }} - PlantCare AI{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; padding: 40px 20px;">
+    <div class="glass-container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <i class="ph-fill ph-plant" style="font-size: 4rem; color: var(--danger);"></i>
+            <h2 style="margin-top: 16px;">{{ disease_name }}</h2>
+        </div>
+        
+        <div style="background: rgba(0,0,0,0.2); padding: 24px; border-radius: 12px; border-left: 4px solid var(--danger); margin-bottom: 24px;">
+            <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 8px;">Description</h3>
+            <p style="margin-bottom: 0;">This condition is typically caused by fungal, viral, or bacterial pathogens, or unfavorable environmental factors affecting the plant's health.</p>
+        </div>
+
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 24px; border-radius: 12px; border-left: 4px solid var(--accent-primary);">
+            <h3 style="font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 8px;">Recommended Remedy</h3>
+            <p style="margin-bottom: 0; font-size: 1.1rem; font-weight: 500; color: #fff;">{{ remedy | default('Consult a local botanist or agricultural expert for specific treatment options.') }}</p>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="{{ url_for('disease') }}" class="btn btn-secondary"><i class="ph-bold ph-arrow-left"></i> Back to Diseases</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

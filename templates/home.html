@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}Home - PlantCare AI{% endblock %}
+
+{% block content %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center; padding: 20px;">
+    
+    <div style="margin-bottom: 20px; animation: fadeIn 1s ease-out;">
+        <i class="ph-fill ph-plant" style="font-size: 5rem; color: var(--accent-primary);"></i>
+    </div>
+
+    <h1 style="max-width: 800px; margin-bottom: 24px; line-height: 1.1;">
+        Detect Plant Diseases with <br> <span style="color: white; -webkit-text-fill-color: white;">Artificial Intelligence</span>
+    </h1>
+
+    <div class="glass-container" style="background: rgba(15, 23, 42, 0.4); padding: 30px; margin-bottom: 40px; box-shadow: none;">
+        <p style="font-size: 1.25rem; color: #cbd5e1; margin-bottom: 0;">
+            Upload a picture of your plant's leaf, and our advanced neural network will analyze it in milliseconds. 
+            Get accurate disease detection and instant actionable remedies to keep your crops thriving.
+        </p>
+    </div>
+
+    <div style="display: flex; gap: 20px; animation: fadeIn 1.2s ease-out;">
+        <a href="{{ url_for('detect') }}" class="btn" style="font-size: 1.25rem; padding: 16px 36px;">
+            <i class="ph-bold ph-scan"></i> Start Scanning
+        </a>
+        <a href="{{ url_for('disease') }}" class="btn btn-secondary" style="font-size: 1.25rem; padding: 16px 36px; border-color: rgba(255,255,255,0.2);">
+            <i class="ph-bold ph-book-open"></i> Browse Diseases
+        </a>
+    </div>
+
+</div>
+{% endblock %}

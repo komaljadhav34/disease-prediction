@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}Leaf Diseases - PlantCare AI{% endblock %}
+
+{% block content %}
+<div style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h2>Common Leaf Diseases</h2>
+        <p>Learn about various leaf diseases, their symptoms, and how to effectively treat them to maintain healthy crops.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+        
+        <!-- Disease Cards -->
+        {% set diseases = [
+            {'name': 'Bacterial Spot', 'icon': 'ph-drop', 'desc': 'Bacterial disease causing small, dark, water-soaked spots on leaves.'},
+            {'name': 'Early Blight', 'icon': 'ph-plant', 'desc': 'Fungal disease characterized by "bullseye" rings on lower leaves.'},
+            {'name': 'Late Blight', 'icon': 'ph-warning-circle', 'desc': 'Devastating water mold causing large, dark brown lesions.'},
+            {'name': 'Leaf Mold', 'icon': 'ph-wind', 'desc': 'Fungal issue forming pale green/yellow spots on upper leaf surfaces.'},
+            {'name': 'Septoria Leaf Spot', 'icon': 'ph-target', 'desc': 'Fungus causing numerous small, circular spots with dark borders.'},
+            {'name': 'Powdery Mildew', 'icon': 'ph-cloud', 'desc': 'White powdery fungal spots spreading across leaf surfaces.'},
+            {'name': 'Rust', 'icon': 'ph-circle', 'desc': 'Rust-colored fungal spores appearing as pustules on leaves.'},
+            {'name': 'Downy Mildew', 'icon': 'ph-waves', 'desc': 'Water mold affecting the underside of leaves, causing yellowing.'},
+            {'name': 'Mosaic Virus', 'icon': 'ph-virus', 'desc': 'Viral infection causing mottled, irregular patterns on foliage.'},
+            {'name': 'Anthracnose', 'icon': 'ph-thermometer', 'desc': 'Fungal disease thriving in warm, wet conditions, causing irregular lesions.'}
+        ] %}
+
+        {% for disease in diseases %}
+        <div class="glass-container" style="padding: 24px; height: 100%; transition: transform 0.3s, border-color 0.3s; border-width: 2px; text-align: left;">
+            <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                <i class="ph-fill {{ disease.icon }}" style="font-size: 2.5rem; color: var(--accent-primary); margin-right: 16px;"></i>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0;">{{ disease.name }}</h3>
+            </div>
+            <p style="font-size: 0.95rem; margin-bottom: 16px; min-height: 45px;">{{ disease.desc }}</p>
+            
+            <div style="background: rgba(16, 185, 129, 0.1); padding: 16px; border-radius: 8px; border-left: 3px solid var(--accent-primary);">
+                <span style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-primary); margin-bottom: 4px; font-weight: 600;">Remedy</span>
+                <span style="font-size: 0.95rem; color: #fff;">{{ remedies.get(disease.name, 'Remove infected leaves, improve air circulation, and consult a local agricultural expert for specific fungicide recommendations.') }}</span>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<style>
+    .glass-container:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-primary);
+    }
+</style>
+{% endblock %}

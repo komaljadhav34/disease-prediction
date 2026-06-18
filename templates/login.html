@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}Log In - PlantCare AI{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px;">
+    <div class="glass-container" style="max-width: 450px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <i class="ph-fill ph-sign-in" style="font-size: 3rem; color: var(--accent-primary);"></i>
+            <h2 style="margin-top: 10px; margin-bottom: 5px;">Welcome Back</h2>
+            <p style="font-size: 0.95rem;">Log in to access disease detection.</p>
+        </div>
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required placeholder="Enter your password">
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Log In</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 24px;">
+            <p style="font-size: 0.9rem; margin-bottom: 0;">Don't have an account? <a href="{{ url_for('signup') }}" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
